@@ -1,8 +1,20 @@
 <template>
   <section>
     <div class="py-6">
-      <img class="w-full" src="../assets/images/1.png" alt="" />
+      <Carousel>
+        <Slide v-for="slide in test" :key="slide.id">
+          <div class="carousel__viewport">
+            <img class="w-full" :src="slide.url" alt="" />
+          </div>
+        </Slide>
+
+        <template #addons>
+          <Navigation />
+          <Pagination />
+        </template>
+      </Carousel>
     </div>
+
     <div class="container mx-auto md:flex px-6">
       <div class="flex justify-center md:px-12">
         <div>
@@ -45,7 +57,80 @@
 </template>
 
 <script>
-export default {}
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+export default {
+  data() {
+    return {
+      test: [
+        {
+          id: 1,
+          url: '../../public/img/workplace-1.png',
+        },
+        {
+          id: 2,
+          url: '../../public/img/workplace-2.png',
+        },
+        {
+          id: 3,
+          url: '../../public/img/workplace-3.png',
+        },
+        {
+          id: 4,
+          url: '../../public/img/workplace-4.png',
+        },
+        {
+          id: 5,
+          url: '../../public/img/workplace-5.png',
+        },
+        {
+          id: 6,
+          url: '../../public/img/workplace-6.png',
+        },
+        {
+          id: 7,
+          url: '../../public/img/workplace-7.png',
+        },
+        {
+          id: 8,
+          url: '../../public/img/workplace-8.png',
+        },
+      ],
+    }
+  },
+  name: 'App',
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
+}
 </script>
 
-<style></style>
+<style lang="scss">
+.carousel__viewport {
+  min-height: 100px;
+  width: 100%;
+  background-color: var(--carousel-color-primary);
+  color: var(--carousel-color-white);
+  font-size: 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel__slide {
+  padding: 10px;
+}
+
+.carousel__prev {
+  transform: translate(20px, 0);
+  background-color: gray;
+}
+.carousel__next {
+  transform: translate(-10px, 0);
+  background-color: gray;
+}
+</style>
