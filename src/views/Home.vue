@@ -3,7 +3,7 @@
     <div class="py-6">
       <Swiper class="swiper" :options="swiperOption" :loop="true" navigation :pagination="{ clickable: ture }" @swiper="onSwiper" @slideChange="onSlideChange">
         <Swiper-slide v-for="item in imgUrl" key="item.id">
-          <img :src="item.url" alt="" />
+          <img class="transform -translate-y-20" :src="item.url" alt="" />
         </Swiper-slide>
       </Swiper>
     </div>
@@ -124,7 +124,7 @@ export default {
   color: gray;
 }
 .swiper-container {
-  max-height: 600px;
+  max-height: 740px;
 }
 .carousel__viewport {
   min-height: 100px;
