@@ -1,18 +1,11 @@
 <template>
-  <section>
+  <section class="container mx-auto">
     <div class="py-6">
-      <Carousel>
-        <Slide v-for="slide in test" :key="slide.id">
-          <div class="carousel__viewport">
-            <img class="w-full" :src="slide.url" alt="" />
-          </div>
-        </Slide>
-
-        <template #addons>
-          <Navigation />
-          <Pagination />
-        </template>
-      </Carousel>
+      <Swiper class="swiper" :options="swiperOption" :loop="true" navigation :pagination="{ clickable: ture }" @swiper="onSwiper" @slideChange="onSlideChange">
+        <Swiper-slide v-for="item in imgUrl" key="item.id">
+          <img :src="item.url" alt="" />
+        </Swiper-slide>
+      </Swiper>
     </div>
 
     <div class="container mx-auto md:flex px-6">
@@ -57,12 +50,30 @@
 </template>
 
 <script>
-import 'vue3-carousel/dist/carousel.css'
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper'
+
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+// Import Swiper styles
+import 'swiper/swiper.scss'
+import 'swiper/components/navigation/navigation.scss'
+import 'swiper/components/pagination/pagination.scss'
+import 'swiper/components/scrollbar/scrollbar.scss'
+SwiperCore.use([Navigation, Pagination, Autoplay])
 export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  name: 'swiper-example-navigation',
+  title: 'Navigation',
   data() {
     return {
-      test: [
+      swiperOption: {
+        navigation: {},
+      },
+      imgUrl: [
         {
           id: 1,
           url: '../../public/img/workplace-1.png',
@@ -98,17 +109,23 @@ export default {
       ],
     }
   },
-  name: 'App',
-  components: {
-    Carousel,
-    Slide,
-    Pagination,
-    Navigation,
-  },
 }
 </script>
 
 <style lang="scss">
+.swiper-pagination {
+  bottom: 20%;
+}
+.swiper-button-next {
+  right: 40px;
+  color: gray;
+}
+.swiper-button-prev {
+  color: gray;
+}
+.swiper-container {
+  max-height: 600px;
+}
 .carousel__viewport {
   min-height: 100px;
   width: 100%;
@@ -132,5 +149,10 @@ export default {
 .carousel__next {
   transform: translate(-10px, 0);
   background-color: gray;
+}
+@media (max-width: 1680px) {
+  .swiper-button-next {
+    right: 10px;
+  }
 }
 </style>
