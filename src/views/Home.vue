@@ -112,12 +112,15 @@ export default {
 .swiper-pagination {
   bottom: 20%;
 }
-.swiper-button-next {
-  right: 40px !important;
-  color: gray;
-}
+
+.swiper-container{
 .swiper-button-prev {
-  color: gray;
+  color: gray ;
+}
+.swiper-button-next {
+  right: 40px ;
+  color: gray ;
+}
 }
 .swiper-container {
   max-height: 740px;
@@ -141,14 +144,18 @@ export default {
   }
 }
 @media (max-width:1410px) {
-  .swiper-pagination{
-    bottom:90px !important
+  .swiper-container{
+    .swiper-pagination{
+      bottom:90px
+      }
   }
 }
 @media (max-width: 844px) {
-  .swiper-button-prev,
-  .swiper-button-next{
-    display: none !important;
+  .swiper-container{
+    .swiper-button-prev,
+    .swiper-button-next{
+      display: none ;
+    }
   }
   
 }
