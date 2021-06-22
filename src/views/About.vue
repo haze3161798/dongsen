@@ -29,7 +29,7 @@
         <div class="sm:flex lg:w-6/12">
           <div class="sm:w-6/12 px-2">
             <div class="flex items-center py-6 sm:block">
-              <div class="p-1 img-size img-sm-size">
+              <div class=" p-1 img-size img-sm-size">
                 <img class="w-full" src="../assets/images/ServiceFlow_1.png" alt="" />
               </div>
               <div class="p-1">
@@ -155,6 +155,7 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+
 .text-2xs-size {
   width: 64px;
   display: block;

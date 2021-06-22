@@ -1,7 +1,7 @@
 <template>
   <section class="container mx-auto">
     <div class="py-6">
-      <Swiper class="swiper" :options="swiperOption" :loop="true" navigation :pagination="{ clickable: ture }" @swiper="onSwiper" @slideChange="onSlideChange">
+      <Swiper class="swiper" :options="swiperOption" :loop="true" navigation :pagination="{ clickable: true }" :autoplay="{delay: 3000, disableOnInteraction: true,}">
         <Swiper-slide v-for="item in imgUrl" key="item.id">
           <img class="transform -translate-y-20" :src="item.url" alt="" />
         </Swiper-slide>
@@ -51,11 +51,7 @@
 
 <script>
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper'
-
-// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
-// Import Swiper styles
 import 'swiper/swiper.scss'
 import 'swiper/components/navigation/navigation.scss'
 import 'swiper/components/pagination/pagination.scss'
@@ -117,7 +113,7 @@ export default {
   bottom: 20%;
 }
 .swiper-button-next {
-  right: 40px;
+  right: 40px !important;
   color: gray;
 }
 .swiper-button-prev {
@@ -125,17 +121,6 @@ export default {
 }
 .swiper-container {
   max-height: 740px;
-}
-.carousel__viewport {
-  min-height: 100px;
-  width: 100%;
-  background-color: var(--carousel-color-primary);
-  color: var(--carousel-color-white);
-  font-size: 20px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .carousel__slide {
@@ -152,7 +137,19 @@ export default {
 }
 @media (max-width: 1680px) {
   .swiper-button-next {
-    right: 10px;
+    right: 10px !important;
   }
+}
+@media (max-width:1410px) {
+  .swiper-pagination{
+    bottom:90px !important
+  }
+}
+@media (max-width: 844px) {
+  .swiper-button-prev,
+  .swiper-button-next{
+    display: none !important;
+  }
+  
 }
 </style>
