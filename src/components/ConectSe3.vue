@@ -166,7 +166,8 @@
             </div>
           </div>
           <div class="w-full">
-            <input class="input" type="text" />
+            <input class="input" type="text" v-model="value" />
+            <span>{{ errorMessage }}</span>
           </div>
         </div>
         <div class="pl-4" style="width: 150px">

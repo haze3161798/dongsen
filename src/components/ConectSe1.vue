@@ -101,7 +101,7 @@
               <option value="6">星期五</option>
               <option value="7">星期六</option>
               <option value="8">星期日</option>
-              <option value="8">不指定</option>
+              <option value="9">不指定</option>
             </select>
           </div>
         </div>

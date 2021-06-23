@@ -27,15 +27,12 @@
           </div>
         </div>
         <button
-          class="border border-black rounded md:hidden relative z-20 active-color"
+          class="border border-black rounded md:hidden relative z-20 active-color cross-btn"
           style="width: 56px; height: 40px"
           @click="listBtn"
           :class="{ active: isActive }"
         >
-          <div class="bg-black transform -translate-y-2 btn-line" style="width: 30px; height: 1px; margin-left: 12px"></div>
-
           <div class="cross"></div>
-          <div class="bg-black transform translate-y-2 btn-line" style="width: 30px; height: 1px; margin-left: 12px"></div>
         </button>
       </div>
     </div>
@@ -62,6 +59,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.cross-btn {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    width: 30px;
+    height: 2px;
+    background-color: black;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    width: 30px;
+    height: 2px;
+    background-color: black;
+  }
+}
+.cross-btn.active {
+  &::after {
+    display: none;
+  }
+  &::before {
+    display: none;
+  }
+}
 .bottom-line {
   position: relative;
   &::after {

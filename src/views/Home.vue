@@ -114,13 +114,13 @@ export default {
 }
 
 .swiper-container{
-.swiper-button-prev {
-  color: gray ;
-}
-.swiper-button-next {
-  right: 40px ;
-  color: gray ;
-}
+  .swiper-button-prev {
+    color: gray ;
+  }
+  .swiper-button-next {
+    right: 40px ;
+    color: gray ;
+  }
 }
 .swiper-container {
   max-height: 740px;
