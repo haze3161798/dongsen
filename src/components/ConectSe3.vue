@@ -11,7 +11,8 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" />
+          <input class="input" type="text" v-model="formData.productName" />
+          <small class="text-red-600">{{ errMsg.productName }}</small>
         </div>
       </div>
       <div class="flex py-2">
@@ -21,7 +22,8 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" />
+          <input class="input" type="text" v-model="formData.Add" />
+          <small class="text-red-600">{{ errMsg.Add }}</small>
         </div>
       </div>
       <div class="flex py-2">
@@ -31,7 +33,8 @@
           </div>
         </div>
         <div class="w-full">
-          <textarea class="textarea" type="text" />
+          <textarea class="textarea" type="text" v-model="formData.need" />
+          <small class="text-red-600">{{ errMsg.need }}</small>
         </div>
       </div>
       <div class="sm:flex">
@@ -166,8 +169,8 @@
             </div>
           </div>
           <div class="w-full">
-            <input class="input" type="text" v-model="value" />
-            <span>{{ errorMessage }}</span>
+            <input class="input" type="text" v-model="formData.verification" />
+            <small class="text-red-600">{{ errMsg.verification }}</small>
           </div>
         </div>
         <div class="pl-4" style="width: 150px">
@@ -176,13 +179,63 @@
       </div>
     </div>
     <div class="flex py-6 justify-center">
-      <button class="border-0 rounded-full px-5 py-2" style="background-color: #d3dce0">確認送出</button>
+      <button class="border-0 rounded-full px-5 py-2" style="background-color: #d3dce0" @click="sumbit">確認送出</button>
     </div>
   </section>
 </template>
 
 <script>
-export default {}
+import { reactive } from 'vue'
+export default {
+  setup() {
+    const formData = reactive({
+      verification: '',
+      productName: '',
+      Add: '',
+      need: '',
+    })
+    const errMsg = reactive({})
+
+    const errKey = (key) => {
+      return key
+    }
+    const key = Object.keys(formData)
+
+    const sumbit = () => {
+      key.forEach((element) => {
+        const errName = {}
+        if (element === 'verification') {
+          errName.verification = '驗證碼'
+        } else if (element === 'productName') {
+          errName.productName = '建案名稱'
+        } else if (element === 'Add') {
+          errName.Add = '建案地址'
+        }
+        switch (true) {
+          case formData[element] === '':
+            errMsg[element] = '請填寫正確的' + errName[element]
+          case formData[element] === null:
+            errMsg[element] = '請填寫正確的' + errName[element]
+          case isNaN(formData[element]) === null:
+            errMsg[element] = '請填寫正確的' + errName[element]
+          case !(Array.isArray(formData[element]) && formData[element].length) === null:
+            errMsg[element] = '請填寫正確的' + errName[element]
+
+            break
+
+          default:
+            break
+        }
+      })
+    }
+    return {
+      formData,
+      sumbit,
+      errMsg,
+      errKey,
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

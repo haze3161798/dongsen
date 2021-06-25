@@ -2,15 +2,6 @@
   <ConectSe1 />
   <ConectSe2 />
   <ConectSe3 />
-  <div>
-    <div>????????</div>
-    <Form @submit="onSubmit">
-      <Field class="input" name="email" :rules="validateEmail" />
-      <ErrorMessage name="email" />
-
-      <button>Sign up for newsletter</button>
-    </Form>
-  </div>
 </template>
 
 <script>
