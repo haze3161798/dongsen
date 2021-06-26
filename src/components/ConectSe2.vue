@@ -78,7 +78,21 @@
 </template>
 
 <script>
-export default {}
+import { reactive } from 'vue'
+export default {
+  props: {
+    userData: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  setup(props) {
+    const userData = reactive(props.userData)
+    return {
+      userData,
+    }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

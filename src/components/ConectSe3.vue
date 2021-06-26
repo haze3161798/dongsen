@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" v-model="formData.productName" />
+          <input class="input" type="text" v-model="userData.productName" />
           <small class="text-red-600">{{ errMsg.productName }}</small>
         </div>
       </div>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" v-model="formData.Add" />
+          <input class="input" type="text" v-model="userData.Add" />
           <small class="text-red-600">{{ errMsg.Add }}</small>
         </div>
       </div>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="w-full">
-          <textarea class="textarea" type="text" v-model="formData.need" />
+          <textarea class="textarea" type="text" v-model="userData.need" />
           <small class="text-red-600">{{ errMsg.need }}</small>
         </div>
       </div>
@@ -44,7 +44,7 @@
               <span>房數</span>
             </div>
             <div>
-              <input class="input" type="text" />
+              <input class="input" type="text" v-model="userData.room" />
             </div>
           </div>
           <div class="p-2">
@@ -52,7 +52,7 @@
               <span>廳數</span>
             </div>
             <div>
-              <input class="input" type="text" />
+              <input class="input" type="text" v-model="userData.hall" />
             </div>
           </div>
           <div class="p-2">
@@ -60,7 +60,7 @@
               <span>衛數</span>
             </div>
             <div>
-              <input class="input" type="text" />
+              <input class="input" type="text" v-model="userData.wc" />
             </div>
           </div>
         </div>
@@ -70,7 +70,7 @@
               <span>廚數</span>
             </div>
             <div>
-              <input class="input" type="text" />
+              <input class="input" type="text" v-model="userData.kiching" />
             </div>
           </div>
           <div class="p-2">
@@ -78,46 +78,52 @@
               <span>陽台</span>
             </div>
             <div>
-              <input class="input" type="text" />
+              <input class="input" type="text" v-model="userData.balcony" />
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="max-w-3xl mx-auto sm:flex">
-      <div class="flex py-2 w-6/12 sm:pr-4">
-        <div class="font-black flex">
-          <div class="must-write text-size">
-            <span>是否交屋</span>
+      <div class="w-6/12">
+        <div class="flex py-2 sm:pr-4">
+          <div class="font-black flex">
+            <div class="must-write text-size">
+              <span>是否交屋</span>
+            </div>
+          </div>
+          <div class="flex" style="margin-top: 7px">
+            <div class="px-1">
+              <input type="radio" name="pay" id="payyes" v-model="userData.spend" />
+              <label class="font-black" for="payyes">是</label>
+            </div>
+            <div class="px-1">
+              <input type="radio" name="pay" id="payno" v-model="userData.spend" />
+              <label class="font-black" for="payno">否</label>
+            </div>
           </div>
         </div>
-        <div class="flex" style="margin-top: 7px">
-          <div class="px-1">
-            <input type="radio" name="pay" id="payyes" />
-            <label class="font-black" for="payyes">是</label>
-          </div>
-          <div class="px-1">
-            <input type="radio" name="pay" id="payno" />
-            <label class="font-black" for="payno">否</label>
-          </div>
-        </div>
+        <small class="text-red-600">{{ errMsg.spend }}</small>
       </div>
-      <div class="flex py-2 w-6/12 sm:pl-4">
-        <div class="font-black flex">
-          <div class="must-write text-size">
-            <span>能否勘場</span>
+      <div class="w-6/12">
+        <div class="flex py-2 sm:pl-4">
+          <div class="font-black flex">
+            <div class="must-write text-size">
+              <span>能否勘場</span>
+            </div>
+          </div>
+          <div class="flex" style="margin-top: 7px">
+            <div class="px-1">
+              <input type="radio" name="watch" id="watchyes" v-model="userData.watch" />
+              <label class="font-black" for="watchyes">是</label>
+            </div>
+            <div class="px-1">
+              <input type="radio" name="watch" id="watchno" v-model="userData.watch" />
+              <label class="font-black" for="no">否</label>
+            </div>
           </div>
         </div>
-        <div class="flex" style="margin-top: 7px">
-          <div class="px-1">
-            <input type="radio" name="watch" id="watchyes" />
-            <label class="font-black" for="watchyes">是</label>
-          </div>
-          <div class="px-1">
-            <input type="radio" name="watch" id="watchno" />
-            <label class="font-black" for="no">否</label>
-          </div>
-        </div>
+        <small class="text-red-600">{{ errMsg.watch }}</small>
       </div>
     </div>
     <div class="max-w-3xl mx-auto sm:flex">
@@ -129,7 +135,7 @@
             </div>
           </div>
           <div class="w-full">
-            <select class="input" name="" id="">
+            <select class="input" name="" id="" v-model="userData.size">
               <option value="1">請選擇</option>
               <option value="2">30坪以下</option>
               <option value="3">30坪~40坪</option>
@@ -137,6 +143,7 @@
               <option value="5">60坪~100坪</option>
               <option value="6">100坪以上</option>
             </select>
+            <small class="text-red-600">{{ errMsg.size }}</small>
           </div>
         </div>
         <div class="flex py-2 md:w-6/12 md:pl-4">
@@ -169,7 +176,7 @@
             </div>
           </div>
           <div class="w-full">
-            <input class="input" type="text" v-model="formData.verification" />
+            <input class="input" type="text" v-model="userData.verification" />
             <small class="text-red-600">{{ errMsg.verification }}</small>
           </div>
         </div>
@@ -178,61 +185,27 @@
         </div>
       </div>
     </div>
-    <div class="flex py-6 justify-center">
-      <button class="border-0 rounded-full px-5 py-2" style="background-color: #d3dce0" @click="sumbit">確認送出</button>
-    </div>
   </section>
 </template>
 
 <script>
 import { reactive } from 'vue'
 export default {
-  setup() {
-    const formData = reactive({
-      verification: '',
-      productName: '',
-      Add: '',
-      need: '',
-    })
-    const errMsg = reactive({})
+  props: {
+    userData: {
+      type: Object,
+      default: () => ({}),
+    },
+    errMsg: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  setup(props) {
+    const userData = reactive(props.userData)
 
-    const errKey = (key) => {
-      return key
-    }
-    const key = Object.keys(formData)
-
-    const sumbit = () => {
-      key.forEach((element) => {
-        const errName = {}
-        if (element === 'verification') {
-          errName.verification = '驗證碼'
-        } else if (element === 'productName') {
-          errName.productName = '建案名稱'
-        } else if (element === 'Add') {
-          errName.Add = '建案地址'
-        }
-        switch (true) {
-          case formData[element] === '':
-            errMsg[element] = '請填寫正確的' + errName[element]
-          case formData[element] === null:
-            errMsg[element] = '請填寫正確的' + errName[element]
-          case isNaN(formData[element]) === null:
-            errMsg[element] = '請填寫正確的' + errName[element]
-          case !(Array.isArray(formData[element]) && formData[element].length) === null:
-            errMsg[element] = '請填寫正確的' + errName[element]
-
-            break
-
-          default:
-            break
-        }
-      })
-    }
     return {
-      formData,
-      sumbit,
-      errMsg,
-      errKey,
+      userData,
     }
   },
 }
