@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="w-full">
-          <select class="input" name="" id="">
+          <select class="input" name="" id="" v-model="userData.houseType">
             <option value="1">請選擇</option>
             <option value="2">別墅</option>
             <option value="3">預售屋</option>
@@ -22,6 +22,7 @@
             <option value="8">工商廠辦</option>
             <option value="9">其他</option>
           </select>
+          <small class="text-red-600">{{ errMsg.houseType }}</small>
         </div>
       </div>
       <div class="flex py-2 md:w-6/12 md:pl-4">
@@ -31,7 +32,7 @@
           </div>
         </div>
         <div class="w-full">
-          <select class="input" name="" id="">
+          <select class="input" name="" id="" v-model="userData.style">
             <option value="1">請選擇</option>
             <option value="2">現代風</option>
             <option value="3">北歐風</option>
@@ -39,6 +40,7 @@
             <option value="5">鄉村風</option>
             <option value="6">簡約風</option>
           </select>
+          <small class="text-red-600">{{ errMsg.style }}</small>
         </div>
       </div>
     </div>
@@ -50,7 +52,7 @@
           </div>
         </div>
         <div class="w-full">
-          <select class="input" name="" id="">
+          <select class="input" name="" id="" v-model="userData.budget">
             <option value="1">請選擇</option>
             <option value="2">20萬~30萬</option>
             <option value="3">30萬~50萬</option>
@@ -61,6 +63,7 @@
             <option value="8">500萬~1000萬</option>
             <option value="9">1000萬以上</option>
           </select>
+          <small class="text-red-600">{{ errMsg.budget }}</small>
         </div>
       </div>
       <div class="flex py-2 md:w-6/12 md:pl-4">
@@ -70,7 +73,7 @@
           </div>
         </div>
         <div class="w-full">
-          <input type="text" class="input" />
+          <input type="text" class="input" v-model="userData.members" />
         </div>
       </div>
     </div>
@@ -82,6 +85,10 @@ import { reactive } from 'vue'
 export default {
   props: {
     userData: {
+      type: Object,
+      default: () => ({}),
+    },
+    errMsg: {
       type: Object,
       default: () => ({}),
     },

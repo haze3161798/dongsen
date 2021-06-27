@@ -16,7 +16,8 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" />
+          <input class="input" type="text" v-model="userData.userName" />
+          <small class="text-red-600">{{ errMsg.userName }}</small>
         </div>
       </div>
       <div class="flex py-2">
@@ -26,7 +27,8 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" />
+          <input class="input" type="text" v-model="userData.mail" />
+          <small class="text-red-600">{{ errMsg.mail }}</small>
         </div>
       </div>
       <div class="flex py-2">
@@ -36,7 +38,8 @@
           </div>
         </div>
         <div class="w-full">
-          <input class="input" type="text" />
+          <input class="input" type="text" v-model="userData.phone" />
+          <small class="text-red-600">{{ errMsg.phone }}</small>
         </div>
       </div>
       <div class="md:flex">
@@ -46,15 +49,18 @@
               <span>裝修經驗</span>
             </div>
           </div>
-          <div class="flex" style="margin-top: 7px">
-            <div class="px-1">
-              <input type="radio" name="experience" id="yes" />
-              <label class="font-black" for="yes">是</label>
+          <div>
+            <div class="flex" style="margin-top: 7px">
+              <div class="px-1">
+                <input type="radio" name="experience" id="yes" v-model="userData.fixExperience" />
+                <label class="font-black" for="yes">是</label>
+              </div>
+              <div class="px-1">
+                <input type="radio" name="experience" id="no" v-model="userData.fixExperience" />
+                <label class="font-black" for="no">否</label>
+              </div>
             </div>
-            <div class="px-1">
-              <input type="radio" name="experience" id="no" />
-              <label class="font-black" for="no">否</label>
-            </div>
+            <small class="text-red-600">{{ errMsg.fixExperience }}</small>
           </div>
         </div>
         <div class="flex py-2">
@@ -64,7 +70,7 @@
             </div>
           </div>
           <div class="w-full">
-            <input class="input" type="number" />
+            <input class="input" type="number" v-model="userData.fixFrequency" />
           </div>
         </div>
       </div>
@@ -76,7 +82,7 @@
             </div>
           </div>
           <div class="w-full">
-            <select class="input" name="" id="">
+            <select class="input" name="" id="" v-model="userData.connectionTime">
               <option value="1">請選擇</option>
               <option value="2">9~13時</option>
               <option value="3">13~17時</option>
@@ -92,7 +98,7 @@
             </div>
           </div>
           <div class="w-full">
-            <select class="input" name="" id="">
+            <select class="input" name="" id="" v-model="userData.day">
               <option value="1">請選擇</option>
               <option value="2">星期一</option>
               <option value="3">星期二</option>
@@ -111,7 +117,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    userData: {
+      type: Object,
+      default: () => ({}),
+    },
+    errMsg: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -85,13 +85,13 @@
       </div>
     </div>
     <div class="max-w-3xl mx-auto sm:flex">
-      <div class="w-6/12">
-        <div class="flex py-2 sm:pr-4">
-          <div class="font-black flex">
-            <div class="must-write text-size">
-              <span>是否交屋</span>
-            </div>
+      <div class="flex py-2 sm:pr-4 w-6/12">
+        <div class="font-black flex">
+          <div class="must-write text-size">
+            <span>是否交屋</span>
           </div>
+        </div>
+        <div>
           <div class="flex" style="margin-top: 7px">
             <div class="px-1">
               <input type="radio" name="pay" id="payyes" v-model="userData.spend" />
@@ -102,16 +102,17 @@
               <label class="font-black" for="payno">否</label>
             </div>
           </div>
+          <small class="text-red-600">{{ errMsg.spend }}</small>
         </div>
-        <small class="text-red-600">{{ errMsg.spend }}</small>
       </div>
-      <div class="w-6/12">
-        <div class="flex py-2 sm:pl-4">
-          <div class="font-black flex">
-            <div class="must-write text-size">
-              <span>能否勘場</span>
-            </div>
+
+      <div class="flex py-2 sm:pl-4 w-6/12">
+        <div class="font-black flex">
+          <div class="must-write text-size">
+            <span>能否勘場</span>
           </div>
+        </div>
+        <div>
           <div class="flex" style="margin-top: 7px">
             <div class="px-1">
               <input type="radio" name="watch" id="watchyes" v-model="userData.watch" />
@@ -122,8 +123,8 @@
               <label class="font-black" for="no">否</label>
             </div>
           </div>
+          <small class="text-red-600">{{ errMsg.watch }}</small>
         </div>
-        <small class="text-red-600">{{ errMsg.watch }}</small>
       </div>
     </div>
     <div class="max-w-3xl mx-auto sm:flex">
@@ -200,13 +201,6 @@ export default {
       type: Object,
       default: () => ({}),
     },
-  },
-  setup(props) {
-    const userData = reactive(props.userData)
-
-    return {
-      userData,
-    }
   },
 }
 </script>

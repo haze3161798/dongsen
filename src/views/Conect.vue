@@ -1,6 +1,6 @@
 <template>
-  <ConectSe1 :userData="userData" />
-  <ConectSe2 :userData="userData" />
+  <ConectSe1 :errMsg="errMsg" :userData="userData" />
+  <ConectSe2 :errMsg="errMsg" :userData="userData" />
   <ConectSe3 :errMsg="errMsg" :userData="userData" />
   <div class="flex py-6 justify-center">
     <button class="border-0 rounded-full px-5 py-2" style="background-color: #d3dce0" @click="sumbit">確認送出</button>
@@ -20,6 +20,17 @@ export default {
   },
   setup() {
     const userData = reactive({
+      userName: '',
+      mail: '',
+      phone: '',
+      fixExperience: '',
+      fixFrequency: '',
+      connectionTime: '',
+      day: '',
+      houseType: '',
+      style: '',
+      budget: '',
+      members: '',
       productName: '',
       Add: '',
       need: '',
@@ -57,6 +68,20 @@ export default {
           errName.watch = '選項'
         } else if (element === 'size') {
           errName.size = '坪數'
+        } else if (element === 'budget') {
+          errName.budget = '預算'
+        } else if (element === 'style') {
+          errName.style = '喜好風格'
+        } else if (element === 'houseType') {
+          errName.houseType = '空間類別'
+        } else if (element === 'fixExperience') {
+          errName.fixExperience = '選項'
+        } else if (element === 'phone') {
+          errName.phone = '連絡電話'
+        } else if (element === 'mail') {
+          errName.mail = '電子郵件'
+        } else if (element === 'userName') {
+          errName.userName = '姓名'
         }
         switch (true) {
           case userData[element] === '':
