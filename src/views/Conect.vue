@@ -1,4 +1,5 @@
 <template>
+  <div>{{ userData }}</div>
   <ConectSe1 :errMsg="errMsg" :userData="userData" />
   <ConectSe2 :errMsg="errMsg" :userData="userData" />
   <ConectSe3 :errMsg="errMsg" :userData="userData" />
@@ -11,7 +12,11 @@
 import ConectSe1 from '../components/ConectSe1.vue'
 import ConectSe2 from '../components/ConectSe2.vue'
 import ConectSe3 from '../components/ConectSe3.vue'
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
+import axios from 'axios'
+const request = axios.create({
+  baseURL: 'http://127.0.0.1:3090/api/',
+})
 export default {
   components: {
     ConectSe1,
@@ -19,32 +24,11 @@ export default {
     ConectSe3,
   },
   setup() {
-    const userData = reactive({
-      userName: '',
-      mail: '',
-      phone: '',
-      fixExperience: '',
-      fixFrequency: '',
-      connectionTime: '',
-      day: '',
-      houseType: '',
-      style: '',
-      budget: '',
-      members: '',
-      productName: '',
-      Add: '',
-      need: '',
-      room: '',
-      hall: '',
-      wc: '',
-      kiching: '',
-      balcony: '',
-      spend: '',
-      watch: '',
-      size: '',
-      files: '',
-      verification: '',
+    const userData = ref({})
+    request.get('form').then((res) => {
+      userData.value = res.data
     })
+
     const errMsg = reactive({})
     const errKey = (key) => {
       return key
