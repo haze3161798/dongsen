@@ -136,7 +136,7 @@
             </div>
           </div>
           <div class="w-full">
-            <select class="input" name="" id="" v-model="userData.size">
+            <select class="input" v-model="userData.size">
               <option value="1">請選擇</option>
               <option value="2">30坪以下</option>
               <option value="3">30坪~40坪</option>
@@ -167,30 +167,10 @@
         </div>
       </div>
     </div>
-    <div class="max-w-3xl mx-auto sm:flex border-t border-gray-200 my-4"></div>
-    <div>
-      <div class="flex items-center justify-center">
-        <div class="flex py-2 pr-4">
-          <div class="font-black flex">
-            <div class="must-write text-size">
-              <span>驗證碼</span>
-            </div>
-          </div>
-          <div class="w-full">
-            <input class="input" type="text" v-model="userData.verification" />
-            <small class="text-red-600">{{ errMsg.verification }}</small>
-          </div>
-        </div>
-        <div class="pl-4" style="width: 150px">
-          <img class="w-full" style="height: 40px" src="../assets/images/validate.jpg" alt="" />
-        </div>
-      </div>
-    </div>
   </section>
 </template>
 
 <script>
-import { reactive } from 'vue'
 export default {
   props: {
     userData: {

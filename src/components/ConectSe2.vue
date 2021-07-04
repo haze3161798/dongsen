@@ -11,7 +11,7 @@
           </div>
         </div>
         <div class="w-full">
-          <select class="input" name="" id="" v-model="userData.houseType">
+          <select class="input" v-model="userData.houseType">
             <option value="1">請選擇</option>
             <option value="2">別墅</option>
             <option value="3">預售屋</option>
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="w-full">
-          <select class="input" name="" id="" v-model="userData.style">
+          <select class="input" v-model="userData.style">
             <option value="1">請選擇</option>
             <option value="2">現代風</option>
             <option value="3">北歐風</option>
@@ -52,7 +52,7 @@
           </div>
         </div>
         <div class="w-full">
-          <select class="input" name="" id="" v-model="userData.budget">
+          <select class="input" v-model="userData.budget">
             <option value="1">請選擇</option>
             <option value="2">20萬~30萬</option>
             <option value="3">30萬~50萬</option>

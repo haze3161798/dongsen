@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="w-full">
-            <select class="input" name="" id="" v-model="userData.connectionTime">
+            <select class="input" v-model="userData.connectionTime">
               <option value="1">請選擇</option>
               <option value="2">9~13時</option>
               <option value="3">13~17時</option>
@@ -98,7 +98,7 @@
             </div>
           </div>
           <div class="w-full">
-            <select class="input" name="" id="" v-model="userData.day">
+            <select class="input" v-model="userData.day">
               <option value="1">請選擇</option>
               <option value="2">星期一</option>
               <option value="3">星期二</option>

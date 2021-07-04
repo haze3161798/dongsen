@@ -5,7 +5,7 @@
     </div>
     <div class="container mx-auto px-6 text-center py-6">
       <div class="mb-4">
-        <span class="text-2xl font-black">冬森設計空間</span>
+        <span class="text-2xl font-black">此作品僅供面試使用 不做任何商業行為與授權</span>
       </div>
       <div class="mx-auto footer-width md-max-w-100 py-4">
         <span class="font-black"> TEL: 0938123340 | dongsendesign@gmail.com </span>
