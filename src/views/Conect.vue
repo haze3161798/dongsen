@@ -4,7 +4,7 @@
     <ConectSe2 :errMsg="errMsg" :userData="userData" />
     <ConectSe3 :errMsg="errMsg" :userData="userData" />
     <div class="flex py-6 justify-center">
-      <button type="submit" class="border-0 rounded-full px-5 py-2" style="background-color: #d3dce0" @click="submit">確認送出</button>
+      <button type="submit" class="border-0 rounded-full px-5 py-2" style="background-color: #d3dce0">確認送出</button>
     </div>
   </form>
 </template>
