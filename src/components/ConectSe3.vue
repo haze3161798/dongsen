@@ -154,10 +154,12 @@
             </div>
           </div>
           <div class="w-full">
-            <input class="hidden" type="file" id="files" />
+            <input class="hidden" type="file" id="files" @change="upload" />
             <label class="files" for="files">
               <div class="flex">
-                <div class="file-white"></div>
+                <div class="file-white">
+                  <div class="" style="margin-top: 7px">{{ uploadName }}</div>
+                </div>
                 <div class="file-btn">
                   <span class="block" style="margin-top: 7px">Browse</span>
                 </div>
@@ -171,6 +173,7 @@
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   props: {
     userData: {
@@ -181,6 +184,21 @@ export default {
       type: Object,
       default: () => ({}),
     },
+  },
+  setup(props) {
+    const userData = props.userData
+    const uploadName = ref('')
+    const upload = (e) => {
+      console.log(e)
+      console.log(e.target.files)
+      userData.files = e.target.files[0]
+      uploadName.value = e.target.files[0].name
+    }
+
+    return {
+      uploadName,
+      upload,
+    }
   },
 }
 </script>
