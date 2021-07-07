@@ -121,6 +121,7 @@ export default {
       })
     }
     const witeData = ref(0)
+
     const submit = (e) => {
       e.preventDefault()
       validate()
@@ -130,11 +131,20 @@ export default {
       witeData.value = 1
       grecaptcha.ready(() => {
         grecaptcha.execute('6LfkCHQbAAAAAEzfumOvE2yrMGTlJ27KgAfZ-w5-', { action: 'submit' }).then((token) => {
+          const form = new FormData()
+          const userDataKey = Object.keys(userData)
+          userDataKey.forEach((el) => {
+            if (el instanceof Blob) {
+              form.append(el, userData[el], userData[el].name)
+            } else {
+              form.append(el, userData[el])
+            }
+          })
           request.post('form', userData).then((res) => {
             if (res.data === 'sessus') {
               witeData.value = 0
             } else {
-              alert('系統錯誤 請重新填寫')
+              alert('很抱歉 系統錯誤')
               witeData.value = 0
             }
           })

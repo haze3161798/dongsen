@@ -149,7 +149,7 @@
         </div>
         <div class="flex py-2 md:w-6/12 md:pl-4">
           <div class="font-black flex">
-            <div class="must-write text-size">
+            <div class="text-size">
               <span>相關檔案</span>
             </div>
           </div>
@@ -165,6 +165,7 @@
                 </div>
               </div>
             </label>
+            <small class="text-red-600">{{ errFileMsg }}</small>
           </div>
         </div>
       </div>
@@ -186,18 +187,25 @@ export default {
     },
   },
   setup(props) {
+    const errFileMsg = ref()
     const userData = props.userData
     const uploadName = ref('')
     const upload = (e) => {
-      console.log(e)
-      console.log(e.target.files)
-      userData.files = e.target.files[0]
-      uploadName.value = e.target.files[0].name
+      const file = e.target.files[0]
+      if (/image/.test(file.type)) {
+        userData.files = file
+        uploadName.value = e.target.files[0].name
+        errFileMsg.value = ''
+      } else {
+        errFileMsg.value = '檔案類型只接受圖片'
+        uploadName.value = ''
+      }
     }
 
     return {
       uploadName,
       upload,
+      errFileMsg,
     }
   },
 }
