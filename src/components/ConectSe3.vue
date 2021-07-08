@@ -156,7 +156,7 @@
           <div class="w-full">
             <input class="hidden" type="file" id="files" @change="upload" />
             <label class="files" for="files">
-              <div class="flex">
+              <div class="flex overflow-hidden">
                 <div class="file-white">
                   <div class="" style="margin-top: 7px">{{ uploadName }}</div>
                 </div>
