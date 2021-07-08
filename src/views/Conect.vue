@@ -140,14 +140,20 @@ export default {
               form.append(el, userData[el])
             }
           })
-          request.post('form', userData).then((res) => {
-            if (res.data === 'sessus') {
-              witeData.value = 0
-            } else {
-              alert('很抱歉 系統錯誤')
-              witeData.value = 0
-            }
-          })
+          request
+            .post('form', form, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            })
+            .then((res) => {
+              if (res.data === 'sessus') {
+                witeData.value = 0
+              } else {
+                alert('很抱歉 系統錯誤')
+                witeData.value = 0
+              }
+            })
         })
       })
     }

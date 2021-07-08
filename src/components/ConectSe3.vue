@@ -166,6 +166,16 @@
               </div>
             </label>
             <small class="text-red-600">{{ errFileMsg }}</small>
+            <div class="pt-2">
+              <div class="border w-full flex justify-center p-2 relative" style="height: 200px">
+                <div>
+                  <button @click="delImg" v-if="imgReader" type="button" class="absolute top-2 left-2" style="width: 30px; height: 30px">
+                    <div class="cross"></div>
+                  </button>
+                </div>
+                <img :src="imgReader" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -190,28 +200,67 @@ export default {
     const errFileMsg = ref()
     const userData = props.userData
     const uploadName = ref('')
+    const imgReader = ref()
     const upload = (e) => {
+      if (e.target.files.length === 0) {
+        return
+      }
       const file = e.target.files[0]
       if (/image/.test(file.type)) {
         userData.files = file
         uploadName.value = e.target.files[0].name
         errFileMsg.value = ''
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          const base64 = e.target.result
+          imgReader.value = base64
+        }
+        reader.readAsDataURL(file)
       } else {
         errFileMsg.value = '檔案類型只接受圖片'
         uploadName.value = ''
       }
     }
-
+    const delImg = () => {
+      errFileMsg.value = ''
+      uploadName.value = ''
+      imgReader.value = ''
+    }
     return {
       uploadName,
       upload,
       errFileMsg,
+      imgReader,
+      delImg,
     }
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.cross {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 5px;
+    width: 20px;
+    height: 2px;
+    background-color: red;
+    transform: rotate(45deg);
+  }
+  &::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 5px;
+    width: 20px;
+    height: 2px;
+    background-color: red;
+    transform: rotate(-45deg);
+  }
+}
 .file-white {
   height: 38px;
   width: 60%;
