@@ -33,7 +33,7 @@ export default {
     ConectSe3,
   },
   setup() {
-    const userData1 = reactive({
+    const userData = reactive({
       userName: '',
       mail: '',
       phone: '',
@@ -58,31 +58,31 @@ export default {
       size: '',
       files: '',
     })
-    const userData = reactive({
-      userName: 'zxc',
-      mail: 'zxc',
-      phone: 'asd',
-      fixExperience: 'zxc',
-      fixFrequency: 'zxc',
-      connectionTime: 'zxc',
-      day: 'zxc',
-      houseType: 'zxc',
-      style: 'zxc',
-      budget: 'zxc',
-      members: 'zxc',
-      productName: 'zxc',
-      Add: 'zxc',
-      need: 'zxc',
-      room: 'zxc',
-      hall: 'zxc',
-      wc: 'zxc',
-      kiching: 'zxc',
-      balcony: 'asd',
-      spend: 'zxc',
-      watch: 'zxc',
-      size: 'zxc',
-      files: 'zxc',
-    })
+    // const userData1 = reactive({
+    //   userName: 'zxc',
+    //   mail: 'zxc',
+    //   phone: 'asd',
+    //   fixExperience: 'zxc',
+    //   fixFrequency: 'zxc',
+    //   connectionTime: 'zxc',
+    //   day: 'zxc',
+    //   houseType: 'zxc',
+    //   style: 'zxc',
+    //   budget: 'zxc',
+    //   members: 'zxc',
+    //   productName: 'zxc',
+    //   Add: 'zxc',
+    //   need: 'zxc',
+    //   room: 'zxc',
+    //   hall: 'zxc',
+    //   wc: 'zxc',
+    //   kiching: 'zxc',
+    //   balcony: 'asd',
+    //   spend: 'zxc',
+    //   watch: 'zxc',
+    //   size: 'zxc',
+    //   files: 'zxc',
+    // })
 
     const errMsg = reactive({})
 

@@ -52,12 +52,12 @@
           <div>
             <div class="flex" style="margin-top: 7px">
               <div class="px-1">
-                <input type="radio" name="experience" id="yes" v-model="userData.fixExperience" />
-                <label class="font-black" for="yes">是</label>
+                <input type="radio" name="experience" id="experienceyes" v-model="userData.fixExperience" />
+                <label class="font-black" for="experienceyes">是</label>
               </div>
               <div class="px-1">
-                <input type="radio" name="experience" id="no" v-model="userData.fixExperience" />
-                <label class="font-black" for="no">否</label>
+                <input type="radio" name="experience" id="experienceno" v-model="userData.fixExperience" />
+                <label class="font-black" for="experienceno">否</label>
               </div>
             </div>
             <small class="text-red-600">{{ errMsg.fixExperience }}</small>

@@ -120,7 +120,7 @@
             </div>
             <div class="px-1">
               <input type="radio" name="watch" id="watchno" v-model="userData.watch" />
-              <label class="font-black" for="no">否</label>
+              <label class="font-black" for="watchno">否</label>
             </div>
           </div>
           <small class="text-red-600">{{ errMsg.watch }}</small>
